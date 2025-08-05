@@ -1,0 +1,40 @@
+.mainContent {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .introduction,
+  .mission,
+  .values {
+    margin-bottom: 2rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    color: #555;
+  }
+  
+  p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  li {
+    font-size: 1rem;
+    color: #666;
+  }
+  

@@ -1,0 +1,81 @@
+/* Cards Section */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 50px auto;
+    background: #f5f5fa;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* Individual Card Styling */
+.card-item {
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px; /* Added padding for better spacing */
+}
+
+.card-item:hover {
+    transform: scale(1.05); /* Slight zoom-in effect */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Styling */
+.card-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Card Title */
+.card-item h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #1b125e;
+}
+
+/* Card Text */
+.card-item p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Button Styling */
+.card-item a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px; /* Adjusted padding for better visibility */
+    background: #3d2c8d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.card-item a:hover {
+    background: #150e47;
+}
+
+/* Wide Cards */
+.wide {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.wide img {
+    height: 200px;
+}
+
+
+

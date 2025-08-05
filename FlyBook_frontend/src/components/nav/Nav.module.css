@@ -1,0 +1,40 @@
+.mainContainer {
+    width: 100%;
+}
+
+.navItem svg {
+    color: white; /* Change icon color to white */
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #0f0f30;
+    padding: 10px;
+    height: 75px;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navItem i {
+    color: white;
+    font-size: 16px;
+}
+
+.navItem a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 10px 15px;
+    transition: font-size 0.3s ease;
+}
+
+.navItem a:hover {
+    font-size: larger;
+    color: rgb(222, 215, 248);
+}

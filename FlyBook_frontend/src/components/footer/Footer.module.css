@@ -1,0 +1,122 @@
+.footer {
+    background-color: #4e7fbe;
+    color: white;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Back to Top Panel */
+.footPanel1 {
+    padding: 15px;
+    margin: 0;
+    text-align: center;
+    background-color: #021a36;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Middle Links Panel */
+.footPanel2 {
+    display: flex;
+    justify-content: center;
+    background-color: #031f3d;
+    gap: 50px;
+    padding: 20px;
+}
+
+.footPanel2 ul {
+    list-style: none;
+    padding: 5px;
+    text-align: left;
+}
+
+.footPanel2 p {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.footPanel2 a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    transition: 0.3s;
+}
+
+.footPanel2 a:hover {
+    color: #ffd700;
+}
+
+/* Logo Styling */
+.logoo {
+    margin-top: 10px;
+}
+
+.logoImage {
+    max-height: 40px;
+    width: auto;
+    display: block;
+}
+
+/* Bottom Panel */
+.footPanel4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0a2542;
+    flex-direction: column;
+    padding: 10px 0 40px 0;
+    position: relative;
+}
+
+.pages {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.pages a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.pages a:hover {
+    color: #ffd700;
+}
+
+/* Apps Section (Images) */
+.apps {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+}
+
+.appImage {
+    max-height: 40px;
+    max-width: 120px;
+    object-fit: contain;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.appImage:hover {
+    transform: scale(1.05);
+}
+
+/* Copyright */
+.copyright {
+    font-size: 0.8rem;
+    padding-top: 10px;
+    opacity: 0.8;
+}

@@ -1,0 +1,48 @@
+.mainSec {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    width: 100vw; 
+    height: 40vh;
+    background-image: url('https://i.postimg.cc/1R8mMkjb/planebackgroung.jpg'); 
+    background-size: cover;
+    background-position: center;
+}
+
+.mainMsg {
+    font-weight: bold;
+    color: white;
+    text-align: center; 
+    padding: 20px 30px;
+    letter-spacing: 2px;
+    font-family: "Poppins", sans-serif;
+}
+
+.p1 {
+    color: aliceblue;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.p2 {
+    color: aliceblue;
+    font-size: 1.8rem;
+    font-weight: 400;
+    animation: blink-effect 4s ease-in-out infinite;
+}
+
+/* Animation Effect */
+@keyframes blink-effect {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5; /* Keeps text slightly visible */
+        transform: scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

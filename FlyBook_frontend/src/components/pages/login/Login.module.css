@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.loginPage {
+  margin: 40px 500px;
+  width: 420px;
+  background-color: #ffffff; /* pure white card */
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* softer for white card */
+  color: #1c1b52;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.loginPage h1 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Form Layout */
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Inputs */
+.username,
+.password {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #ffffff;
+  color: #1c1b52;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.username::placeholder,
+.password::placeholder {
+  color: #999;
+}
+
+.username:focus,
+.password:focus {
+  border-color: #fda828;
+  background: #fffdf5; /* slight warm focus effect */
+  box-shadow: 0 0 5px rgba(253, 168, 40, 0.3);
+}
+
+/* Button */
+.buttonWrapper {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.loginForm button {
+  padding: 12px 0;
+  width: 180px;
+  background: rgb(124, 196, 212);
+  color: white; /* white text on orange gradient */
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 12px rgba(253, 168, 40, 0.4);
+}
+
+.loginForm button:hover {
+  transform: translateY(-2px);
+   background: rgb(29, 59, 126);
+  box-shadow: 0 6px 18px rgba(160, 229, 238, 0.6);
+}
+
+/* Signup link */
+.signupWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 15px;
+  color:black;
+  background-color: #ffffff;
+}
+
+.signupLink {
+  margin-left: 6px;
+  color:rgb(99, 168, 184);
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.signupLink:hover {
+   color: rgb(29, 59, 126);
+   text-decoration: underline;
+}
+.buttonWrapper {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  margin-top: 20px;
+}
+
+.buttonWrapper button {
+  background-color: #1c1b52; /* Dark blue (matches your theme) */
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.buttonWrapper button:hover {
+  background-color: #1d208d; 
+  transform: translateY(-2px); 
+}
+
+.buttonWrapper button:active {
+  transform: translateY(0); 
+}
