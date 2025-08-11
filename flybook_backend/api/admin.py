@@ -9,10 +9,13 @@ class FlightAdmin(admin.ModelAdmin):
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ('user', 'origin', 'destination', 'departure_date', 'travelers', 'seat_class')
-    list_filter = ('airline', 'seat_class', 'stop_preference')
-    search_fields = ('origin', 'destination', 'user__username')
-    
+    list_display = (
+        'user', 'origin', 'destination', 'departure_date',
+        'travelers', 'seat_class', 'special_offer_code'
+    )
+    list_filter = ('airline', 'seat_class', 'stop_preference', 'special_offer_code')
+    search_fields = ('origin', 'destination', 'user__username', 'special_offer_code')
+
 @admin.register(Package)
 class PackageAdmin(admin.ModelAdmin):
     list_display = ('title', 'price', 'duration_days')

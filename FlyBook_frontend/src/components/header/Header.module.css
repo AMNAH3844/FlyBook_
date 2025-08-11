@@ -1,54 +1,79 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .header {
-    width: 100vw;
-    background-color: #1c074d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 140px;
+  width: 100vw;
+  background-color: #1c074d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
 }
 
 .logoSection {
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
 }
 
-/* Logo now as an <img> */
 .logo {
-    height: 140px;
-    width: 100px;
-    object-fit: contain; /* Keeps proportion */
+  height: 140px;
+  width: 100px;
+  object-fit: contain;
+  position: absolute;
+  left: 40px;
 }
 
 .welcome {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    font-size: 26px;
-    font-weight: bold;
-    text-align: center;
-    opacity: 0;
-    animation: slideIn 1.2s forwards ease-out;
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  animation: slideIn 1.2s forwards ease-out;
+}
+
+/* Secondary navigation bar */
+.navBar {
+  width: 100vw;
+  background-color:  #150930;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeLink {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.homeLink:hover {
+  color: #ffd700;
+  transform: scale(1.05);
 }
 
 @keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -60%);
-    }
-    to {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+

@@ -16,6 +16,16 @@
   color: #1c1b52;
   animation: fadeIn 0.6s ease;
 }
+.validCode {
+  color: green; /* Or #28a745 for a nicer green */
+  font-weight: bold;
+}
+
+.invalidCode {
+  color: red; /* Or #dc3545 for a nicer red */
+  font-weight: bold;
+}
+
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
@@ -109,17 +119,21 @@
    color: rgb(29, 59, 126);
    text-decoration: underline;
 }
+/* Button container for Logout + Home stacked vertically */
 .buttonWrapper {
   display: flex;
-  justify-content: center; /* Center horizontally */
+  flex-direction: column; /* stack buttons top to bottom */
+  align-items: center;    /* center horizontally */
+  gap: 12px;              /* space between buttons */
   margin-top: 20px;
 }
 
 .buttonWrapper button {
-  background-color: #1c1b52; /* Dark blue (matches your theme) */
+  width: 180px; /* same width for both */
+  background-color: #1c1b52;
   color: white;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 10px 0;
+  font-size: 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -127,10 +141,10 @@
 }
 
 .buttonWrapper button:hover {
-  background-color: #1d208d; 
-  transform: translateY(-2px); 
+  background-color: #1d208d;
+  transform: translateY(-2px);
 }
 
 .buttonWrapper button:active {
-  transform: translateY(0); 
+  transform: translateY(0);
 }

@@ -14,6 +14,8 @@ class Flight(models.Model):
     def __str__(self):
         return f"{self.flight_number} - {self.airline} ({self.origin} → {self.destination})"
 
+from django.db import models
+from django.contrib.auth.models import User
 
 class Booking(models.Model):
     SEAT_CLASSES = [
@@ -40,10 +42,17 @@ class Booking(models.Model):
     baggage = models.CharField(max_length=50, choices=BAGGAGE_CHOICES, default='Cabin bag only')
     seat_preference = models.CharField(max_length=100, default='No preference')
     stop_preference = models.CharField(max_length=100, default='Any stops')
+
+    # ✅ New field for Special Offers
+    special_offer_code = models.CharField(max_length=50, null=True, blank=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.user.username} - {self.origin} to {self.destination}"
+
+
+
 
 class Package(models.Model):
     title = models.CharField(max_length=100)

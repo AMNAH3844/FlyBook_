@@ -18,12 +18,25 @@ class FlightSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flight
         fields = '__all__'
+from rest_framework import serializers
+from .models import Booking
 
 class BookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
         fields = '__all__'
         read_only_fields = ['user', 'created_at']
+
+    # Optional strict validation
+    def validate_special_offer_code(self, value):
+        if value:
+            valid_codes = [
+                "BALI2025", "PARIS2025", "NYC2025",
+                "TOKYO2025", "SYDNEY2025", "ROME2025"
+            ]
+            if value.strip().upper() not in valid_codes:
+                raise serializers.ValidationError("Invalid special offer code.")
+        return value
 
 class PackageSerializer(serializers.ModelSerializer):
     class Meta:

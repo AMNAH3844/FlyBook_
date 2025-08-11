@@ -10,31 +10,50 @@ body {
   background-color: #fff;
   color: #131212;
 }
-.prebtn {
-  background-color: #cfcfcf;
-  border-radius: 6px;
-  padding: 5px 18px;
-  width: 140px;
-  margin-top: 23px;
-  cursor: pointer;
-  transition: 0.3s;
-}
 
-.prebtn:hover {
-  background-color: #ecf753;
-}
 
-/* Booking Form */
 .bookingForm {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
   gap: 1rem;
   padding: 1rem;
   margin-bottom: 2rem;
   background-color: #0b0c36;
 }
 
+.formRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.formInput {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 150px;
+}
+
+.specialOfferRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.offerInput {
+  height: 40px;
+  padding: 0.8rem;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 0.5rem;
+  width: 100%;
+  min-width: 160px;
+}
 .formInput {
   color: #fff;
   display: flex;
@@ -51,6 +70,29 @@ body {
   color: #000;
   border: none;
   border-radius: 0.5rem;
+}
+.prebtn {
+  background-color: #cfcfcf;
+  border-radius: 6px;
+  padding: 5px 18px;
+  width: 140px;
+  height: 41px;
+  border-radius: 0.5rem;
+  margin-top: 23px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.prebtn:hover {
+  background-color: #ecf753;
+}
+
+.codeRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 /* Layout Section */
@@ -103,9 +145,7 @@ body {
   flex-direction: column;
   align-self: stretch;
   gap: 1.5rem;
- 
 }
-
 
 /* Form Box */
 .box {
@@ -117,7 +157,6 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Box Header */
 .box h2 {
   font-size: 1.2rem;
   color: #fff;
@@ -125,7 +164,6 @@ body {
   cursor: pointer;
 }
 
-/* Inputs inside boxes */
 .boxInput {
   padding: 0.7rem;
   width: 100%;
@@ -134,15 +172,16 @@ body {
   background-color: #fff;
   color: #000;
 }
+
 .inputWrapper {
   display: flex;
-  gap: 0.8rem;       /* space between dropdowns */
-  flex-wrap: wrap;   /* allows wrapping on small screens */
+  gap: 0.8rem;
+  flex-wrap: wrap;
 }
 
 .boxInput {
-  flex: 1;           /* equal space each */
-  min-width: 120px;  /* ensures they don’t shrink too much */
+  flex: 1;
+  min-width: 120px;
 }
 
 /* Mobile Tweaks */
@@ -157,7 +196,8 @@ body {
     width: 100%;
   }
 }
-/* Preview Modal Overlay */
+
+/* Modal Styles */
 .modal {
   position: fixed;
   top: 0;
@@ -171,7 +211,6 @@ body {
   z-index: 1000;
 }
 
-/* Modal Content Box */
 .modalContent {
   background: #fff;
   color: #000;
@@ -189,7 +228,6 @@ body {
   color: #0b0c36;
 }
 
-/* Modal List */
 .modalContent ul {
   list-style: none;
   margin: 1rem 0;
@@ -203,7 +241,6 @@ body {
   padding-bottom: 0.3rem;
 }
 
-/* Modal Buttons */
 .modalActions {
   display: flex;
   justify-content: space-between;
@@ -224,7 +261,6 @@ body {
   background-color: #1a1b60;
 }
 
-/* Preview Button on Form */
 .submitBtn {
   background-color: #1a1b60;
   color: white;
@@ -249,10 +285,65 @@ body {
   margin: 0.5rem 0 1rem;
 }
 
-/* Smooth Fade In */
+/* Fade Animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
+}
+
+/* Special Offer Inputs & Buttons */
+.offerInput {
+  flex: 1;
+  height: 40px;
+  padding: 0.8rem;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.checkBtn {
+  background-color: #181a88;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+  height: 40px;
+}
+
+.checkBtn:hover {
+  background-color: #1a1b60;
+}
+
+.viewBtn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+  height: 40px;
+}
+
+.viewBtn:hover {
+  background-color: #218838;
+}
+
+.codeMessage {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.codeMessage.success {
+  color: #28a745;
+}
+
+.codeMessage.error {
+  color: #dc3545;
 }
 
 

@@ -59,6 +59,7 @@ function Login() {
         {isLoggedIn ? (
           <div className={styles.buttonWrapper}>
             <button onClick={handleLogout}>Logout</button>
+            <button onClick={() => navigate("/")}>Home</button>
           </div>
         ) : (
           <div className={styles.loginForm}>

@@ -1,11 +1,25 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Header from '../../header/Header';
-import styles from './Booking.module.css';
-import travelVideo from './Travel.mp4';
-import Footer from '../../footer/Footer';
+import { useNavigate, useLocation } from "react-router-dom";
+import Header from "../../header/Header";
+import styles from './booking.module.css'
+import travelVideo from "./Travel.mp4";
+import Footer from "../../footer/Footer";
 
 const Booking = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  //  The only valid offer codes from specialoffers page
+  const validOfferCodes = [
+    "BALI2025",
+    "PARIS2025",
+    "NYC2025",
+    "TOKYO2025",
+    "SYDNEY2025",
+    "ROME2025",
+  ];
+
   const [formData, setFormData] = useState({
     origin: "",
     destination: "",
@@ -19,6 +33,10 @@ const Booking = () => {
     stopPreference: "Any stops",
   });
 
+  const [specialCode, setSpecialCode] = useState(
+    new URLSearchParams(location.search).get("code") || ""
+  ); // prefill if coming from offers
+  const [codeMessage, setCodeMessage] = useState("");
   const [showAirlines, setShowAirlines] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [message, setMessage] = useState("");
@@ -28,12 +46,31 @@ const Booking = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Validate special offer code
+  const validateCode = () => {
+    if (!specialCode) {
+      setCodeMessage("Please enter a code.");
+      return;
+    }
+    if (validOfferCodes.includes(specialCode.trim().toUpperCase())) {
+      setCodeMessage("Offer code applied!");
+    } else {
+      setCodeMessage("This code isn't available on our website.");
+    }
+  };
+
   // Confirm booking
   const handleConfirmBooking = async () => {
     try {
-      const token = localStorage.getItem("access_token"); // ✅ match Login.jsx storage
+      const token = localStorage.getItem("access_token");
       if (!token) {
         alert("Please login to book a flight.");
+        return;
+      }
+
+      // If code is entered but invalid — stop booking
+      if (specialCode && !validOfferCodes.includes(specialCode.trim().toUpperCase())) {
+        alert("Invalid offer code. Please check our special offers.");
         return;
       }
 
@@ -48,24 +85,21 @@ const Booking = () => {
         baggage: formData.baggage,
         seat_preference: formData.seatPreference,
         stop_preference: formData.stopPreference,
+        special_offer_code: specialCode || null,
       };
 
-      console.log("Booking payload:", payload); // Debugging
+      console.log("Booking payload:", payload);
 
-      const res = await axios.post(
-        "http://127.0.0.1:8000/api/booking/",
-        payload,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      await axios.post("http://127.0.0.1:8000/api/booking/", payload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
 
-      alert("Booking Successful! 🎉");
+      alert("Booking Successful! ");
       setShowPreview(false);
-      setMessage("Booking successful! 🎉");
+      setMessage("Booking successful! ");
 
       // Reset form
       setFormData({
@@ -80,7 +114,8 @@ const Booking = () => {
         seatPreference: "No preference",
         stopPreference: "Any stops",
       });
-
+      setSpecialCode("");
+      setCodeMessage("");
     } catch (error) {
       console.error("Booking failed:", error.response?.data || error);
       alert("Booking failed. Please try again.");
@@ -90,76 +125,119 @@ const Booking = () => {
   return (
     <div className={styles.container}>
       <Header text="Start your Journey with US!" />
+       {/* Booking Form */}
+<form
+  className={styles.bookingForm}
+  onSubmit={(e) => e.preventDefault()}
+>
+  <div className={styles.formRow}>
+    <div className={styles.formInput}>
+      <label>From</label>
+      <input
+        type="text"
+        name="origin"
+        className={styles.input}
+        placeholder="Enter departure city"
+        value={formData.origin}
+        onChange={handleChange}
+      />
+    </div>
+    <div className={styles.formInput}>
+      <label>To</label>
+      <input
+        type="text"
+        name="destination"
+        className={styles.input}
+        placeholder="Enter destination city"
+        value={formData.destination}
+        onChange={handleChange}
+      />
+    </div>
+    <div className={styles.formInput}>
+      <label>Departure Date</label>
+      <input
+        type="date"
+        name="departureDate"
+        className={styles.input}
+        value={formData.departureDate}
+        onChange={handleChange}
+      />
+    </div>
+    <div className={styles.formInput}>
+      <label>Return Date</label>
+      <input
+        type="date"
+        name="returnDate"
+        className={styles.input}
+        value={formData.returnDate}
+        onChange={handleChange}
+      />
+    </div>
+    <div className={styles.formInput}>
+      <label>Passengers</label>
+      <input
+        type="number"
+        name="travelers"
+        className={styles.input}
+        min="1"
+        value={formData.travelers}
+        onChange={handleChange}
+      />
+    </div>
+  </div>
 
-      {/* Booking Form */}
-      <form 
-        className={styles.bookingForm} 
-        onSubmit={(e) => e.preventDefault()}
-      >
-        <div className={styles.formInput}>
-          <label>From</label>
-          <input
-            type="text"
-            name="origin"
-            className={styles.input}
-            placeholder="Enter departure city"
-            value={formData.origin}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.formInput}>
-          <label>To</label>
-          <input
-            type="text"
-            name="destination"
-            className={styles.input}
-            placeholder="Enter destination city"
-            value={formData.destination}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.formInput}>
-          <label>Departure Date</label>
-          <input
-            type="date"
-            name="departureDate"
-            className={styles.input}
-            value={formData.departureDate}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.formInput}>
-          <label>Return Date</label>
-          <input
-            type="date"
-            name="returnDate"
-            className={styles.input}
-            value={formData.returnDate}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.formInput}>
-          <label>Passengers</label>
-          <input
-            type="number"
-            name="travelers"
-            className={styles.input}
-            min="1"
-            value={formData.travelers}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="button"  className={styles.prebtn} onClick={() => setShowPreview(true)}>
-         Preview Booking
-        </button>
-      </form>
+  {/* Special Offer Row - New Line */}
+  <div className={styles.specialOfferRow}>
+    <div className={styles.formInput}>
+      <label>Special Offer Code?</label>
+      <input
+        type="text"
+        className={styles.offerInput}
+        placeholder="Enter code"
+        value={specialCode}
+        onChange={(e) => setSpecialCode(e.target.value)}
+      />
+    </div>
+    <button
+      type="button"
+      className={styles.checkBtn}
+      onClick={validateCode}
+    >
+      Check
+    </button>
+    <button
+      type="button"
+      className={styles.viewBtn}
+      onClick={() => navigate("/special-offers")}
+    >
+      View Offers
+    </button>
+    <button
+      type="button"
+      className={styles.prebtn}
+      onClick={() => setShowPreview(true)}
+    >
+      Preview Booking
+    </button>
+  </div>
+
+  {codeMessage && <p className={styles.codeMessage}>{codeMessage}</p>}
+</form>
+
+    
 
       {message && <p className={styles.message}>{message}</p>}
 
       <div className={styles.lowerSection}>
         {/* Video Section */}
         <div className={styles.videoBox}>
-          <video src={travelVideo} autoPlay loop muted className={styles.video} />
+          <video
+            src={travelVideo}
+            autoPlay
+            loop
+            muted
+            className={styles.video}
+          />
         </div>
 
         {/* Right Section */}
@@ -252,16 +330,41 @@ const Booking = () => {
           <div className={styles.modalContent}>
             <h2>Preview Booking Details</h2>
             <ul>
-              <li><strong>From:</strong> {formData.origin}</li>
-              <li><strong>To:</strong> {formData.destination}</li>
-              <li><strong>Departure:</strong> {formData.departureDate}</li>
-              <li><strong>Return:</strong> {formData.returnDate || "N/A"}</li>
-              <li><strong>Passengers:</strong> {formData.travelers}</li>
-              <li><strong>Airline:</strong> {formData.airline}</li>
-              <li><strong>Class:</strong> {formData.seatClass}</li>
-              <li><strong>Baggage:</strong> {formData.baggage}</li>
-              <li><strong>Seat Pref:</strong> {formData.seatPreference}</li>
-              <li><strong>Stop Pref:</strong> {formData.stopPreference}</li>
+              <li>
+                <strong>From:</strong> {formData.origin}
+              </li>
+              <li>
+                <strong>To:</strong> {formData.destination}
+              </li>
+              <li>
+                <strong>Departure:</strong> {formData.departureDate}
+              </li>
+              <li>
+                <strong>Return:</strong> {formData.returnDate || "N/A"}
+              </li>
+              <li>
+                <strong>Passengers:</strong> {formData.travelers}
+              </li>
+              <li>
+                <strong>Airline:</strong> {formData.airline}
+              </li>
+              <li>
+                <strong>Class:</strong> {formData.seatClass}
+              </li>
+              <li>
+                <strong>Baggage:</strong> {formData.baggage}
+              </li>
+              <li>
+                <strong>Seat Pref:</strong> {formData.seatPreference}
+              </li>
+              <li>
+                <strong>Stop Pref:</strong> {formData.stopPreference}
+              </li>
+              {specialCode && (
+                <li>
+                  <strong>Special Code:</strong> {specialCode}
+                </li>
+              )}
             </ul>
             <div className={styles.modalActions}>
               <button onClick={handleConfirmBooking}>Confirm Booking</button>
