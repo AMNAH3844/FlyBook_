@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 function LandingPage() {
   return (
-    // style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+    
     <div>
       <Header/>
       <Nav/> {/* Only appears on this page */}

@@ -16,15 +16,6 @@
   color: #1c1b52;
   animation: fadeIn 0.6s ease;
 }
-.validCode {
-  color: green; /* Or #28a745 for a nicer green */
-  font-weight: bold;
-}
-
-.invalidCode {
-  color: red; /* Or #dc3545 for a nicer red */
-  font-weight: bold;
-}
 
 
 @keyframes fadeIn {
